@@ -1,0 +1,36 @@
+{
+   "polyfills":[
+      [
+         " 'from' in Array",
+         "Array.from"
+      ],
+      [
+         " 'includes' in Array.prototype",
+         "Array.prototype.includes"
+      ],
+      [
+         " 'classList' in Element.prototype",
+         "Element.prototype.classList"
+      ],
+      [
+         " 'getOwnPropertyDescriptors' in Object",
+         "Object.getOwnPropertyDescriptors"
+      ],
+      [
+         " 'animate' in Element.prototype",
+         "Element.prototype.animate"
+      ],
+      [
+         " 'remove' in Element.prototype",
+         "Element.prototype.remove"
+      ],
+       [
+           " 'Promise' in window",
+           "Promise"
+       ],
+       [
+           " 'fetch' in window",
+           "fetch"
+       ]
+   ]
+}

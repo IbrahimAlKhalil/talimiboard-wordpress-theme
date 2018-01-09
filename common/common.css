@@ -1,0 +1,252 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@font-face {
+  font-family: "SolaimanLipi";
+  src: url("/resources/fonts/SolaimanLipi.ttf");
+  unicode-range: U+0980-09FF; }
+@font-face {
+  font-family: "Urdu";
+  src: url("/resources/fonts/urdu.ttf"); }
+@font-face {
+  font-family: "Arabic";
+  src: url("/resources/fonts/arabic.ttf"); }
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+:lang(en) {
+  font-family: "Open Sans", "TrebuchetMS", sans-serif;
+  font-size: 1em; }
+
+:lang(bn) {
+  font-family: "SolaimanLipi", sans-serif;
+  font-size: 1em; }
+
+:lang(ur) {
+  font-family: "Urdu", sans-serif; }
+
+:lang(ar) {
+  font-family: "Arabic", sans-serif; }
+
+html {
+  padding: 0;
+  margin: 0;
+  height: 100%; }
+
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  overflow-x: hidden; }
+
+.material-icons {
+  font-family: "Material Icons"; }
+
+::-webkit-scrollbar {
+  width: 8px; }
+
+::-webkit-scrollbar-track {
+  background-color: white;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.3); }
+
+::-webkit-scrollbar-thumb {
+  background: #2d117f;
+  box-shadow: 0 0 10px; }
+
+header > nav {
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.5);
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  top: 25px;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  z-index: 5;
+  background: linear-gradient(#8c65ff, #2d117f); }
+  header > nav > .searchbar {
+    position: absolute;
+    background: linear-gradient(#2d117f, #230c68);
+    padding: 5px;
+    top: 59px;
+    left: calc(50% - 230px/2);
+    border-radius: 0 0 14px 14px; }
+    header > nav > .searchbar > .searchcornerleft {
+      position: absolute;
+      left: -19px;
+      top: 0; }
+    header > nav > .searchbar > .searchcornerright {
+      position: absolute;
+      right: -19px;
+      top: 0; }
+    header > nav > .searchbar > input {
+      outline: none;
+      border: 0;
+      height: 28px;
+      width: 230px;
+      border-radius: 5px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.3) inset;
+      padding-left: 10px;
+      background: white;
+      color: #2d117f;
+      font-size: 0.8em;
+      text-align: center;
+      transition: all 0.1s ease-in-out; }
+      header > nav > .searchbar > input:focus {
+        box-shadow: 0 0 10px white;
+        font-weight: normal; }
+      header > nav > .searchbar > input::placeholder {
+        color: #999999;
+        font-size: 1.2em; }
+  header > nav > .navMenus {
+    transition: all 0.5s ease-in-out;
+    height: 100%;
+    border-right: 1px solid rgba(225, 225, 225, 0.2);
+    font-weight: bold;
+    text-shadow: 0 0 1px black; }
+    header > nav > .navMenus > span {
+      display: block;
+      float: left;
+      margin: 0;
+      color: white;
+      padding: 2px 5px;
+      height: 100%;
+      line-height: 4;
+      font-size: 0.9em;
+      cursor: pointer;
+      border-left: 1px solid rgba(225, 225, 225, 0.2); }
+      header > nav > .navMenus > span:hover {
+        background: #000052; }
+  header > nav > .logos {
+    display: flex;
+    justify-content: flex-start; }
+    header > nav > .logos > .logo {
+      width: 60px;
+      height: 60px;
+      margin-left: 3px;
+      border-radius: 40px; }
+    header > nav > .logos > .logowide {
+      height: 58px;
+      transition: all 0.5s ease-in-out; }
+      @media screen and (max-width: 850px) {
+        header > nav > .logos > .logowide {
+          height: 40px;
+          margin-top: 10px; } }
+
+div.dropDownMenu {
+  min-width: 120px;
+  height: auto;
+  border-radius: 2px;
+  color: #4d4d4d;
+  text-indent: 5px;
+  background: white; }
+  div.dropDownMenu > ul ul {
+    min-width: 120px;
+    height: auto;
+    border-radius: 2px;
+    color: #4d4d4d;
+    text-indent: 5px;
+    background: white; }
+  div.dropDownMenu > ul .nested ul {
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; }
+  div.dropDownMenu > ul .nested.right > ul {
+    left: 100%; }
+  div.dropDownMenu > ul .nested.left > ul {
+    left: -100%; }
+  div.dropDownMenu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: white; }
+    div.dropDownMenu ul > li {
+      padding: 5px;
+      cursor: pointer;
+      height: 42px;
+      line-height: 2;
+      color: #4d4d4d; }
+      div.dropDownMenu ul > li:hover {
+        background: #e2e2e2; }
+    div.dropDownMenu ul li.nested:after {
+      content: "ΓÇ║";
+      position: absolute;
+      margin-left: 8px; }
+    div.dropDownMenu ul li.active > ul {
+      opacity: 1;
+      visibility: visible; }
+
+.tippy-tooltip[data-template-id="#languageDropDown"] {
+  padding: 0;
+  font-size: 1em;
+  text-align: left;
+  box-shadow: 0 0 0 0;
+  position: relative; }
+
+.globalNav {
+  height: 25px;
+  padding: 0;
+  background-color: #f7f7f7;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  z-index: 6;
+  font-size: .9em;
+  color: #666666; }
+  .globalNav > div.social {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .globalNav > div.social > a {
+      display: block;
+      width: 20px;
+      margin-left: 10px; }
+      .globalNav > div.social > a > svg {
+        width: 100%; }
+  .globalNav > div {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    overflow: hidden; }
+    .globalNav > div > span {
+      margin: 0 5px 0 5px;
+      line-height: 1.5rem;
+      cursor: pointer;
+      padding: 0 5px; }
+      .globalNav > div > span:hover {
+        color: #2d117f; }
+      .globalNav > div > span > a {
+        text-decoration: none;
+        color: #666666; }
+    .globalNav > div > span.dropdown {
+      margin-right: 1rem; }
+      .globalNav > div > span.dropdown:after {
+        content: 'ΓÇ║';
+        position: absolute;
+        margin-left: 8px;
+        transform: rotate(90deg);
+        font-size: 1.2rem; }
+
+.spacer {
+  width: auto;
+  margin-left: auto; }
+
+footer {
+  background-color: #0f0a03;
+  height: 80px; }
+  footer > small {
+    color: white;
+    text-align: center;
+    display: block; }
+
+/*# sourceMappingURL=common.css.map */

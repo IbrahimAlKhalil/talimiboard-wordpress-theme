@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <title>Haiyatul ulum</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="Qawmi madrasah education board Bangladesh" />
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/resources/favicons/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/resources/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/resources/favicons/favicon-32x32.png" />
+    <link rel="manifest" href="/resources/favicons/manifest.json" />
+    <link rel="mask-icon" href="/resources/favicons/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="stylesheet" href="/index.css" />
+    <link rel="stylesheet" href="/lib/css/tippy.css">
+    <script src="/lib/js/polyfiller.js"></script>
+    <script src="/lib/js/include.js"></script>
+    <script src="/common/common.js"></script>
+    <script src="index.js"></script>
+
+    <style>
+        #alert {
+            max-width: 300px;
+            min-width: 150px;
+            -webkit-box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+            border-radius: 3px;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            right: 10px;
+            display: none;
+            z-index: 100;
+            background: white;
+            color: #444;
+        }
+
+        #alert> :last-child {
+            margin-top: 20px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+        }
+
+        #alert> :last-child>button {
+            background: red;
+            color: white;
+            border: 0;
+            border-radius: 2px;
+            padding: 5px;
+            float: left;
+            cursor: pointer;
+            -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            -webkit-transition: all 0.1s ease-in-out;
+            transition: all 0.1s ease-in-out;
+            font-size: .9em;
+        }
+
+        #alert> :last-child>button:hover {
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+        }
+
+        #alert> :last-child>button:active {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+
+
+        @keyframes bounce {
+            25% {
+                -webkit-transform: translateY(0px);
+                transform: translateY(0px);
+            }
+            50% {
+                -webkit-transform: translateY(0px);
+                transform: translateY(0px);
+            }
+            75% {
+                -webkit-transform: translateY(30px);
+                transform: translateY(30px);
+            }
+            100% {
+                -webkit-transform: translateY(0px);
+                transform: translateY(0px);
+            }
+        }
+
+        div.loader {
+            width: 100vw;
+            height: 100vh;
+            background: #404142;
+            position: fixed;
+            z-index: 200;
+            color: white;
+            font-size: 1.2em;
+        }
+
+        div.loader>div.loading {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        div.loader>div.loading>p {
+            margin-top: -40px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+
+        div.loader>div.loading>div.dot {
+            width: auto;
+            height: auto;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        div.loader>div.loading>div.dot>div {
+            width: 15px;
+            height: 15px;
+            background-color: #2d117f;
+            border-radius: 50%;
+            margin: 5px;
+            border: 3px solid #fff;
+        }
+
+        div.loader>div.loading>div.dot>div:nth-child(1) {
+            -webkit-animation: bounce 1.5s linear infinite 150ms;
+            animation: bounce 1.5s linear infinite 150ms;
+        }
+
+        div.loader>div.loading>div.dot>div:nth-child(2) {
+            -webkit-animation: bounce 1.5s linear infinite 300ms;
+            animation: bounce 1.5s linear infinite 300ms;
+        }
+
+        div.loader>div.loading>div.dot>div:nth-child(3) {
+            -webkit-animation: bounce 1.5s linear infinite 450ms;
+            animation: bounce 1.5s linear infinite 450ms;
+        }
+
+        div.loader>div.loading>div.dot>div:nth-child(4) {
+            -webkit-animation: bounce 1.5s linear infinite 600ms;
+            animation: bounce 1.5s linear infinite 600ms;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!---------------------------------------------------------->
+    <div class="loader">
+        <div class="loading">
+            <p lang="en">Loading....</p>
+            <div class="dot">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="alert">
+        <div class="message" lang="en">Our website is in development process, you may encounter several problems, and you may found lots of thing does not working properly, we are sorry for that.</div>
+        <div><button>Close</button></div>
+    </div>
+
+    <!---------------------------------------------------------->
+
+    <nav class="globalNav">
+        <div class="social">
+            <a href="https://www.facebook.com/ebrahim.khlil.984" title="Facebook">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 408.788 408.788" style="enable-background:new 0 0 408.788 408.788;" xml:space="preserve">
+<path style="fill:#475993;" d="M353.701,0H55.087C24.665,0,0.002,24.662,0.002,55.085v298.616c0,30.423,24.662,55.085,55.085,55.085
+	h147.275l0.251-146.078h-37.951c-4.932,0-8.935-3.988-8.954-8.92l-0.182-47.087c-0.019-4.959,3.996-8.989,8.955-8.989h37.882
+	v-45.498c0-52.8,32.247-81.55,79.348-81.55h38.65c4.945,0,8.955,4.009,8.955,8.955v39.704c0,4.944-4.007,8.952-8.95,8.955
+	l-23.719,0.011c-25.615,0-30.575,12.172-30.575,30.035v39.389h56.285c5.363,0,9.524,4.683,8.892,10.009l-5.581,47.087
+	c-0.534,4.506-4.355,7.901-8.892,7.901h-50.453l-0.251,146.078h87.631c30.422,0,55.084-24.662,55.084-55.084V55.085
+	C408.786,24.662,384.124,0,353.701,0z"/>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+            </a>
+
+            <a href="#" title="Twitter">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 410.155 410.155" style="enable-background:new 0 0 410.155 410.155;" xml:space="preserve">
+<path style="fill:#76A9EA;" d="M403.632,74.18c-9.113,4.041-18.573,7.229-28.28,9.537c10.696-10.164,18.738-22.877,23.275-37.067
+	l0,0c1.295-4.051-3.105-7.554-6.763-5.385l0,0c-13.504,8.01-28.05,14.019-43.235,17.862c-0.881,0.223-1.79,0.336-2.702,0.336
+	c-2.766,0-5.455-1.027-7.57-2.891c-16.156-14.239-36.935-22.081-58.508-22.081c-9.335,0-18.76,1.455-28.014,4.325
+	c-28.672,8.893-50.795,32.544-57.736,61.724c-2.604,10.945-3.309,21.9-2.097,32.56c0.139,1.225-0.44,2.08-0.797,2.481
+	c-0.627,0.703-1.516,1.106-2.439,1.106c-0.103,0-0.209-0.005-0.314-0.015c-62.762-5.831-119.358-36.068-159.363-85.14l0,0
+	c-2.04-2.503-5.952-2.196-7.578,0.593l0,0C13.677,65.565,9.537,80.937,9.537,96.579c0,23.972,9.631,46.563,26.36,63.032
+	c-7.035-1.668-13.844-4.295-20.169-7.808l0,0c-3.06-1.7-6.825,0.485-6.868,3.985l0,0c-0.438,35.612,20.412,67.3,51.646,81.569
+	c-0.629,0.015-1.258,0.022-1.888,0.022c-4.951,0-9.964-0.478-14.898-1.421l0,0c-3.446-0.658-6.341,2.611-5.271,5.952l0,0
+	c10.138,31.651,37.39,54.981,70.002,60.278c-27.066,18.169-58.585,27.753-91.39,27.753l-10.227-0.006
+	c-3.151,0-5.816,2.054-6.619,5.106c-0.791,3.006,0.666,6.177,3.353,7.74c36.966,21.513,79.131,32.883,121.955,32.883
+	c37.485,0,72.549-7.439,104.219-22.109c29.033-13.449,54.689-32.674,76.255-57.141c20.09-22.792,35.8-49.103,46.692-78.201
+	c10.383-27.737,15.871-57.333,15.871-85.589v-1.346c-0.001-4.537,2.051-8.806,5.631-11.712c13.585-11.03,25.415-24.014,35.16-38.591
+	l0,0C411.924,77.126,407.866,72.302,403.632,74.18L403.632,74.18z"/>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+            </a>
+
+            <a href="#" title="Google Plus">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<circle style="fill:#CF4C3C;" cx="256" cy="256" r="256"/>
+<path style="fill:#AD3228;" d="M372.97,215.509l-36.521,43.939l-68.763-71.518h-95.008l-38.453,41.637v89.912L318.85,504.217
+	c83.594-21.102,150.816-83.318,178.916-163.887L372.97,215.509z"/>
+<path style="fill:#FFFFFF;" d="M212.289,275.344h45.789c-8.037,22.721-29.806,39.012-55.287,38.826
+	c-30.92-0.228-56.491-24.964-57.689-55.863c-1.286-33.12,25.285-60.478,58.123-60.478c15.017,0,28.72,5.723,39.05,15.098
+	c2.448,2.22,6.17,2.236,8.578-0.031l16.818-15.825c2.631-2.476,2.639-6.658,0.016-9.14c-16.382-15.524-38.359-25.198-62.595-25.669
+	c-51.69-1.012-95.261,41.37-95.62,93.07c-0.365,52.09,41.75,94.429,93.753,94.429c50.014,0,90.869-39.159,93.605-88.485
+	c0.072-0.619,0.121-21.52,0.121-21.52H212.29c-3.47,0-6.282,2.813-6.282,6.282v23.024
+	C206.007,272.531,208.82,275.344,212.289,275.344L212.289,275.344z"/>
+<path style="fill:#D1D1D1;" d="M374.531,241.847V219.35c0-3.041-2.463-5.504-5.504-5.504h-18.934c-3.041,0-5.506,2.463-5.506,5.504
+	v22.497h-22.492c-3.041,0-5.51,2.463-5.51,5.506v18.932c0,3.039,2.467,5.506,5.51,5.506h22.492v22.494
+	c0,3.041,2.463,5.506,5.506,5.506h18.934c3.041,0,5.504-2.465,5.504-5.506v-22.494h22.497c3.039,0,5.506-2.467,5.506-5.506v-18.932
+	c0-3.041-2.467-5.506-5.506-5.506H374.531z"/>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+            </a>
+
+        </div>
+        <div class="spacer"></div>
+        <div data-tid="globalNav">
+        </div>
+    </nav>
+    <header>
+        <nav>
+            <div class="logos">
+                <img class="logowide" src="/resources/images/Logo.wide.svg" />
+            </div>
+
+            <div class="spacer"></div>
+            <div data-tid="navMenus" class="navMenus">
+            </div>
+
+
+            <div class="searchbar">
+                <svg class="searchcornerleft" height='30' width='20'>
+  <path 
+        d="
+           M0,0
+           L20,0
+           20,30
+           Q16,5
+           0,0
+           z
+           "
+        fill="#2d117f" stroke-width="5" />
+</svg>
+
+                <svg class="searchcornerright" height='30' width='20'>
+  <path 
+        d="
+           M20,0
+           L0,0
+           0,30
+           Q6,5
+           20,0
+           z
+           "
+        fill="#2d117f" stroke-width="5" />
+</svg>
+                <input data-did="placeholder:sp" type="text" placeholder="" />
+            </div>
+        </nav>
+        <div id="slideshow" class="swiper-container">
+            <div class="imgs swiper-wrapper">
+            </div>
+            <div class="dots swiper-pagination">
+            </div>
+            <button data-did="title:prev" class="ripple raised">
+                    <i class="material-icons">&#xe408;</i>
+            </button>
+
+            <button data-did="title:next" class="ripple raised">
+            <i class="material-icons">&#xe409;</i>
+            </button>
+            <div class='loading'>
+                <img src="resources/icons/spinner.png" />
+            </div>
+            <img src="/resources/images/Logo.circle.svg" class="logoCircle">
+        </div>
+
+    </header>
+    <main>
+        <div class="noticboxwrapperwr">
+            <span>
+               <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 300 300" style="enable-background:new 0 0 300 300;" xml:space="preserve">
+<g>
+	<g>
+		<path d="M149.996,0C67.157,0,0.001,67.161,0.001,149.997S67.157,300,149.996,300s150.003-67.163,150.003-150.003
+			S232.835,0,149.996,0z M78.081,221.593l35.517-57.227c2.983,3.934,6.323,7.827,10.102,11.606
+			c3.737,3.74,7.628,7.114,11.588,10.118L78.081,221.593z M218.641,128.074c-3.779,3.781-10.185,4.152-17.302,1.73l-19.027,19.021
+			c9.563,15.536,11.84,30.664,4.375,38.136c-3.022,3.022-7.298,4.451-12.348,4.451c-9.298,0-21.221-4.866-32.762-13.585
+			c-0.257-0.192-0.511-0.394-0.765-0.594c-0.822-0.633-1.642-1.286-2.459-1.961c-0.324-0.267-0.646-0.534-0.97-0.807
+			c-0.778-0.659-1.551-1.338-2.321-2.031c-0.303-0.272-0.609-0.539-0.913-0.817c-1.048-0.965-2.088-1.953-3.115-2.98
+			c-1.172-1.172-2.295-2.36-3.382-3.558c-0.674-0.742-1.307-1.491-1.95-2.241c-0.35-0.41-0.713-0.817-1.056-1.232
+			c-0.833-1.001-1.621-2.007-2.394-3.016c-0.096-0.127-0.195-0.252-0.288-0.376c-13.531-17.852-17.857-36.627-9.251-45.232
+			c3.022-3.022,7.298-4.451,12.348-4.451c7.436,0,16.544,3.115,25.798,8.813l19.014-19.011c-2.422-7.119-2.049-13.523,1.735-17.302
+			c7.083-7.088,23.36-2.303,36.346,10.686C220.946,104.706,225.731,120.983,218.641,128.074z"/>
+	</g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+           </span>
+
+            <div class="noticeboxwrapper swiper-container">
+                <div class="notices swiper-wrapper">
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        <p class="marquee"><span></span></p>
+        <hr/>
+        <section class="contents">
+            <div class="fileCards">
+                <h1>ডকুমেন্ট সমূহ</h1>
+
+                <div class="card">
+                    <div class="img">
+                        <img src="/resources/icons/forms.svg" alt="">
+                        <span class="preview icon" title="preview">
+                            <i class="material-icons">&#xe417;</i>
+                        </span>
+
+                    </div>
+                    <div class="bottomBar">
+                        <div class="title" title="নেগ্রান মুমতাহিন আবেদন ফরম (বাক্তিগত)">
+                            নেগ্রান মুমতাহিন আবেদন ফরম (বাক্তিগত)
+                        </div>
+                        <div class="options">
+                            <a href="/resources/documents/N.M%20Prostab.pdf"><span class="icon"><i title="Download" class="material-icons">file_download</i></span></a>
+                            <span class="preview icon" title="Preview">
+                            <i class="material-icons">&#xe417;</i>
+                            </span>
+                            <span class="icon">
+                                <i class="material-icons" title="Info">info</i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="img">
+                        <img src="/resources/icons/forms.svg" alt="">
+                        <span class="preview icon" title="preview">
+                            <i class="material-icons">&#xe417;</i>
+                        </span>
+
+                    </div>
+                    <div class="bottomBar">
+                        <div class="title" title="পরীক্ষার্থী নিবন্ধন (রেজিস্ট্রেশন) ফরম পূরণের নিয়মাবলী">
+                            পরীক্ষার্থী নিবন্ধন (রেজিস্ট্রেশন) ফরম পূরণের নিয়মাবলী
+                        </div>
+                        <div class="options">
+                            <a href="/resources/documents/%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%20%E0%A6%A8%E0%A6%BF%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7%E0%A6%A8%20%E0%A6%B8%E0%A6%82%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4%20%E0%A6%AC%E0%A6%BF%E0%A6%9C%E0%A7%8D%E0%A6%9E%E0%A6%AA%E0%A7%8D%E0%A6%A4%E0%A6%BF%202018.pdf">
+                                <span class="icon"><i title="Download" class="material-icons">file_download</i></span>
+                            </a>
+                            <span class="preview icon" title="Preview">
+                            <i class="material-icons">&#xe417;</i>
+                            </span>
+                            <span class="icon">
+                                <i class="material-icons" title="Info">info</i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="img">
+                        <img src="/resources/icons/forms.svg" alt="">
+                        <span class="preview icon" title="preview">
+                            <i class="material-icons">&#xe417;</i>
+                        </span>
+
+                    </div>
+                    <div class="bottomBar">
+                        <div class="title" title="পরীক্ষার্থী নিবন্ধন রেজিস্ট্রেশন ফরম">
+                            পরীক্ষার্থী নিবন্ধন রেজিস্ট্রেশন ফরম
+                        </div>
+                        <div class="options">
+                            <a href="/resources/documents/%E0%A6%A6%E0%A6%B0%E0%A6%B8%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%A4%20%E0%A6%AC%E0%A6%BF%E0%A6%AD%E0%A6%BE%E0%A6%97%20%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%20%E0%A6%A8%E0%A6%BF%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7%E0%A6%A8%20%E0%A6%AB%E0%A6%B0%E0%A6%AE.pdf"><span class="icon"><i title="Download" class="material-icons">file_download</i></span></a>
+                            <span class="preview icon" title="Preview">
+                            <i class="material-icons">&#xe417;</i>
+                            </span>
+                            <span class="icon">
+                                <i class="material-icons" title="Info">info</i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="img">
+                        <img src="/resources/icons/forms.svg" alt="">
+                        <span class="preview icon" title="preview">
+                            <i class="material-icons">&#xe417;</i>
+                        </span>
+
+                    </div>
+                    <div class="bottomBar">
+                        <div class="title" title="দরসিয়াত নেগ্রান /  মুমতাহিন আবেদন ফরম (সম্মিলিত)">
+                            দরসিয়াত নেগ্রান / মুমতাহিন আবেদন ফরম (সম্মিলিত)
+                        </div>
+                        <div class="options">
+                            <a href="/resources/documents/%E0%A6%A8%E0%A7%87%E0%A6%97%E0%A6%B0%E0%A6%BE%E0%A6%A8-%E0%A6%AE%E0%A7%81%E0%A6%AE%E0%A6%A4%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A8%20%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BE%E0%A6%AC%20%E0%A6%B8%E0%A6%AE%E0%A7%8D%E0%A6%AE%E0%A6%BF%E0%A6%B2%E0%A6%BF%E0%A6%A4.pdf">
+                               <span class="icon"><i title="Download" class="material-icons">file_download</i></span>
+                           </a>
+                            <span class="preview icon" title="Preview">
+                              <i class="material-icons">&#xe417;</i>
+                            </span>
+                            <span class="icon">
+                                <i class="material-icons" title="Info">info</i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="card">
+                    <div class="img">
+                        <img src="/resources/icons/forms.svg" alt="">
+                        <span class="preview icon" title="preview">
+                            <i class="material-icons">&#xe417;</i>
+                        </span>
+
+                    </div>
+                    <div class="bottomBar">
+                        <div class="title" title="হিফয পরীক্ষার্থী নিবন্ধন (রেজিস্ট্রেশন) ফরম">
+                            হিফয পরীক্ষার্থী নিবন্ধন (রেজিস্ট্রেশন) ফরম
+                        </div>
+                        <div class="options">
+                            <a href="/resources/documents/%E0%A6%B9%E0%A6%BF%E0%A6%AB%E0%A6%AF%20%E0%A6%AC%E0%A6%BF%E0%A6%AD%E0%A6%BE%E0%A6%97%E0%A7%87%E0%A6%B0%20%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%20%E0%A6%A8%E0%A6%BF%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7%E0%A6%A8%20%E0%A6%AB%E0%A6%B0%E0%A6%AE.pdf">
+                                <span class="icon"><i title="Download" class="material-icons">file_download</i></span>
+                            </a>
+                            <span class="preview icon" title="Preview">
+                            <i class="material-icons">&#xe417;</i>
+                            </span>
+                            <span class="icon">
+                                <i class="material-icons" title="Info">info</i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="img">
+                        <img src="/resources/icons/forms.svg" alt="">
+                        <span class="preview icon" title="preview">
+                            <i class="material-icons">&#xe417;</i>
+                        </span>
+
+                    </div>
+                    <div class="bottomBar">
+                        <div class="title" title="হিফয মুমতাহিন আবেদন ফরম">
+                            হিফয মুমতাহিন আবেদন ফরম
+                        </div>
+                        <div class="options">
+                            <a href="/resources/documents/%E0%A6%B9%E0%A6%BF%E0%A6%AB%E0%A6%AF%20%E0%A6%AE%E0%A7%81%E0%A6%AE%E0%A6%A4%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A8%20%E0%A6%B8%E0%A6%AE%E0%A7%8D%E0%A6%AE%E0%A6%BF%E0%A6%B2%E0%A6%BF%E0%A6%A4%20%E0%A7%A8%E0%A7%9F%20%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A7%9F%E0%A6%BF%E0%A6%95.pdf">
+                               <span class="icon"><i title="Download" class="material-icons">file_download</i></span>
+                           </a>
+                            <span class="preview icon" title="Preview">
+                            <i class="material-icons">&#xe417;</i>
+                            </span>
+                            <span class="icon">
+                                <i class="material-icons" title="Info">info</i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav class="side sticky">
+                <div class='swanky_wrapper'>
+                    <label for='Dashboard'>
+                        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/dash.png'>
+                        <span>Dashboard</span>
+                        <div class='lil_arrow'></div>
+                        <div class='bar'></div>
+                        <div class='swanky_wrapper__content'>
+                            <ul>
+                                <li>Tools</li>
+                                <li>Reports</li>
+                                <li>Analytics</li>
+                                <li>Code Blocks</li>
+                                <li>Code Blocks</li>
+                                <li>Code Blocks</li>
+                            </ul>
+                        </div>
+                    </label>
+                    <label for='Sales'>
+                        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/del.png'>
+                        <span>Sales</span>
+                        <div class='lil_arrow'></div>
+                        <div class='bar'></div>
+                        <div class='swanky_wrapper__content'>
+                            <ul>
+                                <li>New Sales</li>
+                                <li>Expired Sales</li>
+                                <li>Sales Reports</li>
+                                <li>Deliveries</li>
+                            </ul>
+                        </div>
+                    </label>
+                    <label for='Messages'>
+                        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/mess.png'>
+                        <span>Messages</span>
+                        <div class='lil_arrow'></div>
+                        <div class='bar'></div>
+                        <div class='swanky_wrapper__content'>
+                            <ul>
+                                <li>Inbox</li>
+                                <li>Outbox</li>
+                                <li>Sent</li>
+                                <li>Archived</li>
+                            </ul>
+                        </div>
+                    </label>
+                    <label for='Users'>
+                        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/users.png'>
+                        <span>Users</span>
+                        <div class='lil_arrow'></div>
+                        <div class='bar'></div>
+                        <div class='swanky_wrapper__content'>
+                            <ul>
+                                <li>New User</li>
+                                <li>User Groups</li>
+                                <li>Permissions</li>
+                                <li>Passwords</li>
+                            </ul>
+                        </div>
+                    </label>
+                    <label for='Settings'>
+                        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/set.png'>
+                        <span>Settings</span>
+                        <div class='lil_arrow'></div>
+                        <div class='bar'></div>
+                        <div class='swanky_wrapper__content'>
+                            <ul>
+                                <li>Databases</li>
+                                <li>Design</li>
+                                <li>Change User</li>
+                                <li>Log Out</li>
+                            </ul>
+                        </div>
+                    </label>
+                </div>
+                </div>
+            </nav>
+        </section>
+    </main>
+    <footer>
+        <small lang="en">copyright &copy; blablabla all rights reserved.</small>
+    </footer>
+</body>
+
+</html>
